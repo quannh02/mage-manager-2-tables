@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Os_Customvote>
+            <version>0.1.0</version>
+        </Os_Customvote>
+    </modules>
+    <frontend>
+        <routers>
+            <customvote>
+                <use>standard</use>
+                <args>
+                    <module>Os_Customvote</module>
+                    <frontName>customvote</frontName>
+                </args>
+            </customvote>
+        </routers>
+        <layout>
+            <updates>
+                <customvote>
+                    <file>customvote.xml</file>
+                </customvote>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<customvote>
+				<use>admin</use>
+				<args>
+					<module>Os_Customvote</module>
+					<frontName>customvote</frontName>
+				</args>
+			</customvote>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<customvote module="customvote">
+				<title>Custom Vote</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<questions module="customvote">
+						<title>Manage Questions</title>
+						<sort_order>0</sort_order>
+						<action>customvote/adminhtml_question</action>
+					</questions>
+				</children>
+				<children>
+					<answer module="customvote">
+						<title>Manage Answer</title>
+						<sort_order>10</sort_order>
+						<action>customvote/adminhtml_answer</action>
+					</answer>
+				</children>
+			</customvote>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<customvote module="customvote">
+							<title>Custom Vote</title>
+							<sort_order>71</sort_order>               
+							<children>
+								<questions module="customvote">
+									<title>Manage Questions</title>
+									<sort_order>0</sort_order>
+								</questions>
+							</children>
+							<children>
+								<answer module="customvote">
+									<title>Manage Answers</title>
+									<sort_order>10</sort_order>
+								</answer>
+							</children>
+						</customvote>
+						<system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <customvote translate="title" module="customvote">
+                                            <title>Custom Vote</title>
+                                        </customvote>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<customvote>
+					<file>customvote.xml</file>
+				</customvote>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <customvote>
+                <class>Os_Customvote_Model</class>
+                <resourceModel>customvote_mysql4</resourceModel>
+            </customvote>
+            <customvote_mysql4>
+                <class>Os_Customvote_Model_Mysql4</class>
+                <entities>
+                    <question>
+                        <table>custom_question</table>
+                    </question>
+                </entities>
+                <entities>
+                    <answer>
+                        <table>custom_answer</table>
+                    </answer>
+                </entities>
+            </customvote_mysql4>
+        </models>
+        <resources>
+            <customvote_setup>
+                <setup>
+                    <module>Os_Customvote</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customvote_setup>
+            <customvote_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </customvote_write>
+            <customvote_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </customvote_read>
+        </resources>
+        <blocks>
+            <customvote>
+                <class>Os_Customvote_Block</class>
+            </customvote>
+        </blocks>
+        <helpers>
+            <customvote>
+                <class>Os_Customvote_Helper</class>
+            </customvote>
+        </helpers>
+    </global>
+	<default>
+		<customvote>
+			<info>
+				<enabled>1</enabled>
+			</info>
+		</customvote>
+	</default>
+</config>

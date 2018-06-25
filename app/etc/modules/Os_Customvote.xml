@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Os_Customvote>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Os_Customvote>
+    </modules>
+</config> 

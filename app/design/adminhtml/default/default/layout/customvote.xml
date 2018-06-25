@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customvote_adminhtml_question_index>
+        <reference name="content">
+            <block type="customvote/adminhtml_question" name="customvote" />
+        </reference>
+    </customvote_adminhtml_question_index>
+    <customvote_adminhtml_answer_index>
+        <reference name="content">
+            <block type="customvote/adminhtml_answer" name="customvoteitem" />
+        </reference>
+    </customvote_adminhtml_answer_index>
+</layout>
